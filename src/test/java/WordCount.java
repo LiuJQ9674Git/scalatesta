@@ -15,12 +15,11 @@ public class WordCount {
         final int port=9000;
 
         // get the execution environment
-        final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        final StreamExecutionEnvironment env =
+                StreamExecutionEnvironment.getExecutionEnvironment();
 
         // get input data by connecting to the socket
          DataStream<String> text = env.socketTextStream(hostname, port, "\n");
-        //DataStream<String> text =env.readTextFile("file:////Users/liujianqiang/Desktop/Dev-Proj/scalatesta/src/main/resources/data.txt",
-        //        "\n");
         // parse the data, group it, window it, and aggregate the counts
         DataStream<WordWithCount> windowCounts = text
 
